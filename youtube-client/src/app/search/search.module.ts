@@ -3,15 +3,13 @@ import { CommonModule } from '@angular/common';
 import { SearchItemComponent } from './components/search-item/search-item.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 
-
-
 @NgModule({
   declarations: [
     SearchItemComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+  ],
 })
 export class SearchModule { }
