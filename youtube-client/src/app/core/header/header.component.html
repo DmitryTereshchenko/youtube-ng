@@ -1,12 +1,17 @@
 <header>
   <div class="header-container">
-    <div class="logo">
-      <img src="assets/logo.svg" alt="">
+    <div class="header__logo">
+      <img src="assets/logo.svg" alt="Logo">
     </div>
-    <app-search-form></app-search-form>
-    <div class="user-info">
+    <div class="header__controls">
+      <app-search-form></app-search-form>
+      <button class="header__settings">
+        <img src="assets/settings.svg" alt="Settings">
+      </button>
+    </div>
+    <div class="header__user">
       <span>Your Name</span>
-      <img src="assets/user.svg" alt="">
+      <img src="assets/user.svg" alt="User">
     </div>
   </div>
 </header>

@@ -1,14 +1,13 @@
 :host {
-  width: 100%;
+  flex: 1;
 }
 
 form {
-  height: 30px;
   display: flex;
+  min-height: 2rem;
 }
 
 input {
-  height: inherit;
   padding: 5px;
   flex: 1;
   border-top-right-radius: 0;
@@ -22,8 +21,7 @@ button {
   background-color: #2F80ED;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  padding: 5px;
+  padding: 5px 15px;
   border: none;
   color: #fff;
-  height: inherit;
 }

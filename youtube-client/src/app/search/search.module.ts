@@ -15,6 +15,7 @@ import { SearchFormComponent } from './components/search-form/search-form.compon
   ],
   exports: [
     SearchFormComponent,
+    SearchResultsComponent
   ],
 })
 export class SearchModule { }

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import { SearchModule } from './search/search.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { CoreModule } from './core/core.module';
   ],
   imports: [
     BrowserModule,
-    CoreModule
+    CoreModule,
+    SearchModule
   ],
   providers: [],
   bootstrap: [AppComponent],
