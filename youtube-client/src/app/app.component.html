@@ -1,6 +1,16 @@
-<app-header></app-header>
-<main>
-  <div class="wrapper">
-    <app-search-results></app-search-results>
-  </div>
-</main>
+<app-header
+  (filterVisibilityChanged)="onFilterVibilityChanged($event)"
+  (searchSubmit)="onSearchSubmit($event)">
+</app-header>
+<app-search-filter
+  *ngIf="isFilteringVisible"
+  (sortingChanged)="onSortingChanged($event)"
+  (filteringChanged)="onFilteringChanged($event)">
+</app-search-filter>
+<div class="wrapper">
+  <app-search-results
+    *ngIf="isSearchResultVisible"
+    [sortingParameters]="sortingParameters"
+    [filteringParameter]="filteringParameter">
+  </app-search-results>
+</div>

@@ -1,1 +1,12 @@
-<p>search-item works!</p>
+<div class="search-item" [appHighlightBorder]="releaseDate">
+  <img class="item__image" [src]="itemImage" alt="Item Image">
+  <div class="item__statistic">
+    <app-search-item-statistic [item]="searchItem"></app-search-item-statistic>
+  </div>
+  <div class="item__title">
+    {{ title }}
+  </div>
+  <button class="item__btn">
+    more...
+  </button>
+</div>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { SearchItem } from '../../models/search-item.model';
 
 @Component({
   selector: 'app-search-item',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./search-item.component.scss'],
 })
 export class SearchItemComponent {
+  @Input('item') searchItem!: SearchItem;
 
+  get itemImage() {
+    return this.searchItem.snippet.thumbnails.medium.url;
+  }
+
+  get title() {
+    return this.searchItem.snippet.localized.title;
+  }
+
+  get releaseDate() {
+    return new Date(Date.parse(this.searchItem.snippet.publishedAt));
+  }
 }

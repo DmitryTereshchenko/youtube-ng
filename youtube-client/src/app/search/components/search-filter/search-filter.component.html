@@ -1,0 +1,7 @@
+<div class="search-filter">
+  <span>Sorting by:</span>
+  <button class="filter__link" (click)="onSortingHandler('date')">date</button>
+  <button class="filter__link" (click)="onSortingHandler('viewsCount')">count of views</button>
+  <button class="filter__link" (click)="onFilteringChanged()">by word or sentance</button>
+  <input type="text" [(ngModel)]="filterInputValue" (change)="onFilteringChanged()" />
+</div>

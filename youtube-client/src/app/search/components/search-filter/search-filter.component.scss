@@ -1,0 +1,18 @@
+.search-filter {
+  padding: 10px;
+  background-color: #E5E5E5;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  
+  .filter__link {
+    color: #2F80ED;
+    text-decoration: underline;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+  }
+}
