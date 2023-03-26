@@ -8,9 +8,9 @@ describe('SearchItemStatisticComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchItemStatisticComponent ]
+      declarations: [SearchItemStatisticComponent],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SearchItemStatisticComponent);
     component = fixture.componentInstance;

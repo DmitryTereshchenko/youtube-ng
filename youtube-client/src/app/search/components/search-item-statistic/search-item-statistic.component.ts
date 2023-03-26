@@ -9,10 +9,11 @@ interface IconItem {
 @Component({
   selector: 'app-search-item-statistic',
   templateUrl: './search-item-statistic.component.html',
-  styleUrls: ['./search-item-statistic.component.scss']
+  styleUrls: ['./search-item-statistic.component.scss'],
 })
 export class SearchItemStatisticComponent implements OnInit {
   @Input() item!: SearchItem;
+
   iconItems: IconItem[] = [];
 
   ngOnInit() {
@@ -20,12 +21,16 @@ export class SearchItemStatisticComponent implements OnInit {
   }
 
   generateIcons(): IconItem[] {
-    const { statistics: { commentCount, likeCount, dislikeCount, viewCount } } = this.item;
+    const {
+      statistics: {
+        commentCount, likeCount, dislikeCount, viewCount,
+      },
+    } = this.item;
     return [
       { imgPath: 'assets/viewed.svg', value: +viewCount },
       { imgPath: 'assets/liked.svg', value: +likeCount },
       { imgPath: 'assets/dislike.svg', value: +dislikeCount },
-      { imgPath: 'assets/comments.svg', value: +commentCount }
+      { imgPath: 'assets/comments.svg', value: +commentCount },
     ];
   }
 }

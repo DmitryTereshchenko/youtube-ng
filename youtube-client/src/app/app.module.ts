@@ -12,7 +12,7 @@ import { SearchModule } from './search/search.module';
   imports: [
     BrowserModule,
     CoreModule,
-    SearchModule
+    SearchModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

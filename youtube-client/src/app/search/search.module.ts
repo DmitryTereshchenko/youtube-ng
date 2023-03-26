@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { SearchItemComponent } from './components/search-item/search-item.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { HighlightBorderDirective } from './directives/highlight-border.directive';
 import { SearchItemStatisticComponent } from './components/search-item-statistic/search-item-statistic.component';
 import { SearchFilterComponent } from './components/search-filter/search-filter.component';
-import { FormsModule } from '@angular/forms';
 import { SortingPipe } from './pipes/sorting.pipe';
 import { FilteringPipe } from './pipes/filtering.pipe';
 
@@ -23,12 +23,12 @@ import { FilteringPipe } from './pipes/filtering.pipe';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     SearchFormComponent,
     SearchResultsComponent,
-    SearchFilterComponent
+    SearchFilterComponent,
   ],
 })
 export class SearchModule { }

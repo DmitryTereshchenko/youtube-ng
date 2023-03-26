@@ -1,4 +1,6 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import {
+  Component, Input, OnChanges, OnInit,
+} from '@angular/core';
 import mockResponse from '../../constants/mock-response.json';
 import { SearchItem } from '../../models/search-item.model';
 import { SearchResponse } from '../../models/search-response.model';
@@ -13,9 +15,11 @@ import { SortingPipe } from '../../pipes/sorting.pipe';
 })
 export class SearchResultsComponent implements OnInit, OnChanges {
   @Input() sortingParameters!: Sorting;
+
   @Input() filteringParameter!: string;
 
   mockItems = (<SearchResponse>mockResponse).items;
+
   filteredItems: SearchItem[] = [];
 
   ngOnInit() {

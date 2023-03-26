@@ -7,7 +7,7 @@ import { SearchItem } from '../../models/search-item.model';
   styleUrls: ['./search-item.component.scss'],
 })
 export class SearchItemComponent {
-  @Input('item') searchItem!: SearchItem;
+  @Input() searchItem!: SearchItem;
 
   get itemImage() {
     return this.searchItem.snippet.thumbnails.medium.url;

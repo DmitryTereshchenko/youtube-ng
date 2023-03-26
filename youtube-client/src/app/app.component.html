@@ -1,6 +1,6 @@
 <app-header
   (filterVisibilityChanged)="onFilterVibilityChanged($event)"
-  (searchSubmit)="onSearchSubmit($event)">
+  (searchSubmit)="onSearchSubmit()">
 </app-header>
 <app-search-filter
   *ngIf="isFilteringVisible"

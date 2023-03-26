@@ -8,15 +8,18 @@ import { Sorting } from './search/models/sorting.model';
 })
 export class AppComponent {
   sortingParameters: Sorting = {} as Sorting;
-  filteringParameter: string = '';
+
+  filteringParameter = '';
+
   isFilteringVisible = false;
+
   isSearchResultVisible = false;
 
   onFilterVibilityChanged(isVisible: boolean) {
     this.isFilteringVisible = isVisible;
   }
 
-  onSearchSubmit(searchValue: string) {
+  onSearchSubmit() {
     this.isSearchResultVisible = true;
   }
 

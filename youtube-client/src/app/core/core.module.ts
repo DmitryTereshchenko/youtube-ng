@@ -12,7 +12,7 @@ import { SearchModule } from '../search/search.module';
     SearchModule,
   ],
   exports: [
-    HeaderComponent
-  ]
+    HeaderComponent,
+  ],
 })
 export class CoreModule { }

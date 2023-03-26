@@ -7,6 +7,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class HeaderComponent {
   @Output() filterVisibilityChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   @Output() searchSubmit: EventEmitter<string> = new EventEmitter<string>();
 
   isFilteringVisible = false;
