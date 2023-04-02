@@ -10,7 +10,7 @@ import { FilteringPipe } from '../pipes/filtering.pipe';
   providedIn: 'root'
 })
 export class YoutubeService {
-  isResultsVisible = true;
+  isResultsVisible = false;
   isFilterBlockVisible = false;
   videoItems: SearchItem[] = [];
   videos$: BehaviorSubject<SearchItem[]> = new BehaviorSubject<SearchItem[]>([]);

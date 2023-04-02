@@ -34,7 +34,6 @@ export class HighlightShadowDirective extends HighlightDirectiveBase implements 
   setColorForNativeElement() {
     this.color = this.getDateDifference(this.releaseDate) || '';
     if (this.isPreventByDefault) return;
-    console.log(1111);
     this.renderer2.setStyle(this.el.nativeElement, 'filter', `drop-shadow(0px 4px 4px ${this.color})`);
   }
 }
