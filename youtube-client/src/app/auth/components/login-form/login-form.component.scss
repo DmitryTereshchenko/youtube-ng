@@ -1,0 +1,26 @@
+.login-form {
+  display: flex;
+  padding: 20px;
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 300px;
+
+  .form-control {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #E0E0E0;
+    width: 100%;
+  }
+
+  button {
+    background-color: #2F80ED;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 32px;
+    color: #fff;
+    cursor: pointer;
+  }
+}

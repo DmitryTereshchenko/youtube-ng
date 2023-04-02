@@ -1,0 +1,26 @@
+.search-item {
+  background-color: #E5E5E5;
+  max-width: 250px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 5px;
+  height: 100%;
+
+  .item {
+    &__btn {
+      background-color: #2F80ED;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-top: auto;
+      cursor: pointer;
+    }
+
+    &__title {
+      font-size: 20px;
+    }
+  }
+}

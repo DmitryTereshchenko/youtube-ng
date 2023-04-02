@@ -1,0 +1,16 @@
+<div class="item" [appHighlightShadow]="releaseDate">
+  <button [appHighlightBackground]="releaseDate" class="item__button" (click)="onBackButtonClick()"><</button>
+  <img class="item__image" [src]="item.snippet.thumbnails.standard.url" alt="Preview">
+  <div class="description" [appHighlightBorder]="releaseDate">
+    <div class="description__header">
+      <h2>{{ item.snippet.title }}</h2>
+      <p>{{ item.snippet.publishedAt | date:'fullDate' }}</p>
+    </div>
+    <div class="description__content">
+      <p>{{ item.snippet.description }}</p>
+    </div>
+    <div class="description__stat">
+      <app-search-item-statistic [item]="item"></app-search-item-statistic>
+    </div>
+  </div>
+</div>
