@@ -16,7 +16,7 @@ export abstract class HighlightDirectiveBase {
 
     if (month > 6 || years >= 1) return '#e53935';
     if (years < 1) {
-      if (month >= 1 && month <= 6) return '#ffff00';
+      if (month >= 1 && month <= 6) return '#FFEB3B';
       if (month < 1 && days >= 7) return '#00ab6b';
 
       return '#2F80ED';

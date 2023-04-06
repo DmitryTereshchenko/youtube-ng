@@ -1,4 +1,4 @@
-<div class="item" [appHighlightShadow]="releaseDate">
+<div class="item" *ngIf="item" [appHighlightShadow]="releaseDate">
   <button [appHighlightBackground]="releaseDate" class="item__button" (click)="onBackButtonClick()"><</button>
   <img class="item__image" [src]="item.snippet.thumbnails.standard.url" alt="Preview">
   <div class="description" [appHighlightBorder]="releaseDate">

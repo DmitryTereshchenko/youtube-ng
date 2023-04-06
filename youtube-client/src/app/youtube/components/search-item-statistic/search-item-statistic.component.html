@@ -1,6 +1,6 @@
 <div class="search-statistic">
   <div class="statistic-item" *ngFor="let iconItem of iconItems">
     <img [src]="iconItem.imgPath" alt="icon">
-    <span>{{ iconItem.value }}</span>
+    <span>{{ iconItem.value | numberSuffix }}</span>
   </div>
 </div>

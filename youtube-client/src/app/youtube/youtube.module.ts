@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { MainPageComponent } from './pages/main/main-page.component';
@@ -14,6 +14,7 @@ import { YotubeRoutingModule } from './yotube-routing.module';
 import { ItemDetailComponent } from './components/item-detail/item-detail.component';
 import { HighlightShadowDirective } from './directives/highlight-shadow.directive';
 import { HighlightBackgroundDirective } from './directives/highlight-background.directive';
+import { NumberSuffixPipe } from './pipes/number-suffix.pipe';
 
 @NgModule({
   declarations: [
@@ -27,12 +28,14 @@ import { HighlightBackgroundDirective } from './directives/highlight-background.
     FilteringPipe,
     ItemDetailComponent,
     HighlightShadowDirective,
-    HighlightBackgroundDirective
+    HighlightBackgroundDirective,
+    NumberSuffixPipe
   ],
   imports: [
     CommonModule,
     FormsModule,
     RouterLink,
+    NgOptimizedImage,
     YotubeRoutingModule
   ],
   exports: [

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { map, switchMap } from 'rxjs';
 import { SearchItem } from '../../models/search-item.model';
 import { YoutubeService } from '../../services/youtube.service';
 
@@ -22,15 +23,18 @@ export class ItemDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe(item => {
-      const id = item.get('id') || '';
-      const currentVideo = this.youtubeService.getVideoById(id);
-      if (!currentVideo) {
-        this.router.navigate(['/404']);
-        return;
-      }
-      this.item = currentVideo;
-    });
+    this.activatedRoute.paramMap
+      .pipe(
+        map(param => param.get('id') || ''),
+        switchMap(id => this.youtubeService.getVideoById(id))
+      )
+      .subscribe(result => {
+        if (!result) {
+          this.router.navigate(['/404']);
+        }
+        // eslint-disable-next-line prefer-destructuring
+        this.item = result.items[0];
+      });
   }
 
   onBackButtonClick() {

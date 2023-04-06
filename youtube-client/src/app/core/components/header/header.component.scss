@@ -8,8 +8,8 @@ header {
   }
 
   .header {
-    &__logo, &__user {
-      flex: 1 0 200px;
+    &__logo {
+      flex: 1 0 100px;
     }
 
     &__controls {
@@ -31,20 +31,27 @@ header {
 
     &__user {
       display: flex;
+      flex: 1 0 250px;
       align-items: center;
       gap: 10px;
       justify-content: flex-end;
 
       button {
         border: none;
-        width: 30px;
-        height: 30px;
         cursor: pointer;
       }
 
+      .login-btn, .logout-btn {
+        background-color: #2F80ED;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        height: 30px;
+      }
+
       img {
-        height: inherit;
-        width: inherit;
+        height: 30px;
+        width: 30px;
       }
     }
   }

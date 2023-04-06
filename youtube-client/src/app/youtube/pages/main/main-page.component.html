@@ -1,4 +1,4 @@
 <div class="main-page">
-  <app-search-filter *ngIf="isFilterVisible"></app-search-filter>
-  <app-search-results *ngIf="isResultsVisible"></app-search-results>
+  <app-search-filter *ngIf="isFilterVisible | async"></app-search-filter>
+  <app-search-results></app-search-results>
 </div>

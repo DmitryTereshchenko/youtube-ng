@@ -10,10 +10,7 @@ form {
 input {
   padding: 5px;
   flex: 1;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-radius: 5px;
   border: 1px solid #000;
 }
 

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
-import {RouterStateSnapshot} from "@angular/router";
 
 @Component({
   selector: 'app-login-form',

@@ -13,11 +13,12 @@ export class SearchItemComponent {
   constructor(private router: Router) {}
 
   get itemImage() {
-    return this.searchItem.snippet.thumbnails.medium.url;
+    const { thumbnails } = this.searchItem.snippet;
+    return thumbnails.maxres || thumbnails.high;
   }
 
   get title() {
-    return this.searchItem.snippet.localized.title;
+    return this.searchItem.snippet.title;
   }
 
   get releaseDate() {
@@ -25,6 +26,7 @@ export class SearchItemComponent {
   }
 
   navigateToDetails() {
-    this.router.navigate(['videos', this.searchItem.id]);
+    const id = typeof this.searchItem.id === 'string' ? this.searchItem.id : this.searchItem.id.videoId;
+    this.router.navigate(['videos', id]);
   }
 }
