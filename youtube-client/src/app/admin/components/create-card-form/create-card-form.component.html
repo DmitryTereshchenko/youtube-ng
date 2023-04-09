@@ -1,0 +1,49 @@
+<form [formGroup]="form" class="form" (ngSubmit)="onSubmitForm()">
+  <h2>Create new card</h2>
+  <div class="form-control">
+    <label>
+      Title
+      <input type="text" formControlName="title">
+    </label>
+    <div class="control-error" *ngIf="isControlInvalid('title')">
+      {{ getControlErrors('title') }}
+    </div>
+  </div>
+  <div class="form-control">
+    <label>
+      Description
+      <input type="text" formControlName="description">
+    </label>
+    <div class="control-error" *ngIf="isControlInvalid('description')">
+      {{ getControlErrors('description') }}
+    </div>
+  </div>
+  <div class="form-control">
+    <label>
+      Img
+      <input type="text" formControlName="img">
+    </label>
+    <div class="control-error" *ngIf="isControlInvalid('img')">
+      {{ getControlErrors('img') }}
+    </div>
+  </div>
+  <div class="form-control">
+    <label>
+      Link video
+      <input type="text" formControlName="linkVideo">
+    </label>
+    <div class="control-error" *ngIf="isControlInvalid('linkVideo')">
+      {{ getControlErrors('linkVideo') }}
+    </div>
+  </div>
+  <div class="form-control">
+    <label>
+      Link video
+      <input type="date" formControlName="creationDate">
+    </label>
+    <div class="control-error" *ngIf="isControlInvalid('creationDate')">
+      {{ getControlErrors('creationDate') }}
+    </div>
+  </div>
+  <button type="submit" [disabled]="isSubmitButtonDisabled()">Create card</button>
+</form>

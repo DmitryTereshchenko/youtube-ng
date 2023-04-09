@@ -1,10 +1,22 @@
-<form #form="ngForm" class="login-form" (ngSubmit)="login(form)">
+<form [formGroup]="form" class="form" (ngSubmit)="onSubmitForm()">
   <h2>Login</h2>
-  <label>
-    <input type="text" ngModel name="login" class="form-control">
-  </label>
-  <label>
-    <input type="password" ngModel name="password" class="form-control">
-  </label>
-  <button type="submit">Login</button>
+  <div class="form-control">
+    <label>
+      login
+      <input type="text" formControlName="login">
+    </label>
+    <div class="control-error" *ngIf="isControlInvalid('login')">
+      {{ getControlErrors('login') }}
+    </div>
+  </div>
+  <div class="form-control">
+    <label>
+      password
+      <input type="password" formControlName="password">
+    </label>
+    <div class="control-error" *ngIf="isControlInvalid('password')">
+      {{ getControlErrors('password') }}
+    </div>
+  </div>
+  <button type="submit" [disabled]="isSubmitButtonDisabled()">Login</button>
 </form>
