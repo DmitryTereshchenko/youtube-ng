@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormBuilder, FormGroup, ValidationErrors, Validators
+  FormBuilder, FormGroup, Validators
 } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
@@ -34,57 +34,5 @@ export class LoginFormComponent extends FormBase implements OnInit {
       login: ['', Validators.compose([Validators.required, EmailValidator()])],
       password: ['', Validators.compose([Validators.required, PasswordValidator()])]
     });
-  }
-
-  getPasswordErrors(formErrors: ValidationErrors): string {
-    let errorMessage = '';
-    Object.keys(formErrors).forEach(key => {
-      switch (key) {
-        case 'required':
-          errorMessage = 'Please enter a password';
-          break;
-        case 'weak':
-          errorMessage = 'Your password isn\'t strong enough';
-          break;
-        default:
-          errorMessage = 'The field is invalid';
-      }
-    });
-
-    return errorMessage;
-  }
-
-  getLoginErrors(formErrors: ValidationErrors): string {
-    let errorMessage = '';
-    Object.keys(formErrors).forEach(key => {
-      switch (key) {
-        case 'required':
-          errorMessage = 'Please enter a login email';
-          break;
-        case 'email':
-          errorMessage = 'The login email is invalid';
-          break;
-        default:
-          errorMessage = 'The field is invalid';
-      }
-    });
-
-    return errorMessage;
-  }
-
-  getControlErrors(controlName: string) {
-    const formErrors = this.form.controls[controlName].errors;
-    if (formErrors) {
-      switch (controlName) {
-        case 'login':
-          return this.getLoginErrors(formErrors);
-        case 'password':
-          return this.getPasswordErrors(formErrors);
-        default:
-          return 'The field is invalid';
-      }
-    }
-
-    return null;
   }
 }

@@ -5,8 +5,14 @@
       Title
       <input type="text" formControlName="title">
     </label>
-    <div class="control-error" *ngIf="isControlInvalid('title')">
-      {{ getControlErrors('title') }}
+    <div class="control-error" *ngIf="isControlInvalid('title', 'required')">
+      Please enter title
+    </div>
+    <div class="control-error" *ngIf="isControlInvalid('title', 'minlength')">
+      The title is too short
+    </div>
+    <div class="control-error" *ngIf="isControlInvalid('title', 'maxlength')">
+      The title is too long
     </div>
   </div>
   <div class="form-control">
@@ -14,35 +20,44 @@
       Description
       <input type="text" formControlName="description">
     </label>
-    <div class="control-error" *ngIf="isControlInvalid('description')">
-      {{ getControlErrors('description') }}
+    <div class="control-error" *ngIf="isControlInvalid('description', 'maxlength')">
+      The description is too long
     </div>
   </div>
   <div class="form-control">
     <label>
       Img
-      <input type="text" formControlName="img">
+      <input type="text" formControlName="imgLink">
     </label>
-    <div class="control-error" *ngIf="isControlInvalid('img')">
-      {{ getControlErrors('img') }}
+    <div class="control-error" *ngIf="isControlInvalid('imgLink', 'required')">
+      Please enter a link to the image
+    </div>
+    <div class="control-error" *ngIf="isControlInvalid('imgLink', 'link')">
+      The image link is invalid
     </div>
   </div>
   <div class="form-control">
     <label>
       Link video
-      <input type="text" formControlName="linkVideo">
+      <input type="text" formControlName="videoLink">
     </label>
-    <div class="control-error" *ngIf="isControlInvalid('linkVideo')">
-      {{ getControlErrors('linkVideo') }}
+    <div class="control-error" *ngIf="isControlInvalid('videoLink', 'required')">
+      Please enter a link to the video
+    </div>
+    <div class="control-error" *ngIf="isControlInvalid('videoLink', 'link')">
+      The video link is invalid
     </div>
   </div>
   <div class="form-control">
     <label>
-      Link video
+      Creation Date
       <input type="date" formControlName="creationDate">
     </label>
-    <div class="control-error" *ngIf="isControlInvalid('creationDate')">
-      {{ getControlErrors('creationDate') }}
+    <div class="control-error" *ngIf="isControlInvalid('creationDate', 'required')">
+      Please enter a creation date
+    </div>
+    <div class="control-error" *ngIf="isControlInvalid('creationDate', 'date')">
+      The date is invalid
     </div>
   </div>
   <button type="submit" [disabled]="isSubmitButtonDisabled()">Create card</button>

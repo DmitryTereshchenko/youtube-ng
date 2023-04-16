@@ -1,4 +1,7 @@
+import { VideoType } from './util.model';
+
 export interface SearchItem {
+  itemType: VideoType.Youtube;
   kind: string;
   etag: string;
   id: ItemId | string;

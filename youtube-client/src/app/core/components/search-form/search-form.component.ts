@@ -2,9 +2,11 @@ import {
   AfterViewInit, Component, ElementRef, ViewChild
 } from '@angular/core';
 import {
-  debounceTime, distinctUntilChanged, filter, fromEvent, map, switchMap
+  debounceTime, distinctUntilChanged, filter, fromEvent, map, tap
 } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { YoutubeService } from '../../../youtube/services/youtube.service';
+import { YoutubeCardsActions } from '../../../redux/actions/yootubeCards.actions';
 
 @Component({
   selector: 'app-search-form',
@@ -13,7 +15,7 @@ import { YoutubeService } from '../../../youtube/services/youtube.service';
 })
 export class SearchFormComponent implements AfterViewInit {
   @ViewChild('searchInput', { static: true }) searchInput!: ElementRef;
-  constructor(private youtubeService: YoutubeService) {
+  constructor(private youtubeService: YoutubeService, private store: Store) {
   }
 
   ngAfterViewInit(): void {
@@ -27,7 +29,7 @@ export class SearchFormComponent implements AfterViewInit {
         debounceTime(500),
         distinctUntilChanged(),
         filter(val => val.length >= 3),
-        switchMap(val => this.youtubeService.findVideos(val))
+        tap(val => this.store.dispatch(YoutubeCardsActions.getAll({ searchValue: val })))
       ).subscribe();
   }
 }

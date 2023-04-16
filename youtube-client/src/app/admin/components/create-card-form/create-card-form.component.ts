@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormBuilder, FormGroup, ValidationErrors, Validators
+  FormBuilder, FormGroup, Validators
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { FormBase } from '../../../utils/FormBase';
 import { LinkValidator } from '../validators/link.validator';
 import { DateValidator } from '../../../auth/validators/date.validator';
+import { CustomCardsActions } from '../../../redux/actions/customCards.actions';
 
 @Component({
   selector: 'app-create-card-form',
@@ -13,7 +15,7 @@ import { DateValidator } from '../../../auth/validators/date.validator';
 })
 export class CreateCardFormComponent extends FormBase implements OnInit {
   form!: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private store: Store) {
     super();
   }
 
@@ -21,28 +23,11 @@ export class CreateCardFormComponent extends FormBase implements OnInit {
     this.buildForm();
   }
 
-  onSubmitForm() {}
-
-  getControlErrors(controlName: string) {
-    const formErrors = this.form.controls[controlName].errors;
-    if (formErrors) {
-      switch (controlName) {
-        case 'title':
-          return this.getTitleErrors(formErrors);
-        case 'description':
-          return this.getDescriptionErrors(formErrors);
-        case 'img':
-          return this.getImageErrors(formErrors);
-        case 'linkVideo':
-          return this.getLinkVideoErrors(formErrors);
-        case 'creationDate':
-          return this.getCreationDateErrors(formErrors);
-        default:
-          return 'The field is invalid';
-      }
-    }
-
-    return null;
+  onSubmitForm() {
+    this.store.dispatch(CustomCardsActions.add({
+      ...this.form.getRawValue(),
+      id: new Date().getTime().toString()
+    }));
   }
 
   buildForm() {
@@ -51,99 +36,9 @@ export class CreateCardFormComponent extends FormBase implements OnInit {
         [Validators.required, Validators.minLength(3), Validators.maxLength(20)]
       )],
       description: ['', Validators.max(255)],
-      img: ['', Validators.compose([Validators.required, LinkValidator()])],
-      linkVideo: ['', Validators.compose([Validators.required, LinkValidator()])],
+      imgLink: ['https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2022/05/youtube-official-website-1653045906.jpg', Validators.compose([Validators.required, LinkValidator()])],
+      videoLink: ['https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2022/05/youtube-official-website-1653045906.jpg', Validators.compose([Validators.required, LinkValidator()])],
       creationDate: ['', Validators.compose([Validators.required, DateValidator()])]
     });
-  }
-
-  private getTitleErrors(formErrors: ValidationErrors): string {
-    let errorMessage = '';
-    Object.keys(formErrors).forEach(key => {
-      switch (key) {
-        case 'required':
-          errorMessage = 'Please enter title';
-          break;
-        case 'minlength':
-          errorMessage = 'The title is too short';
-          break;
-        case 'maxlength':
-          errorMessage = 'The title is too long';
-          break;
-        default:
-          errorMessage = 'The field is invalid';
-      }
-    });
-
-    return errorMessage;
-  }
-
-  private getDescriptionErrors(formErrors: ValidationErrors): string {
-    let errorMessage = '';
-    Object.keys(formErrors).forEach(key => {
-      switch (key) {
-        case 'maxlength':
-          errorMessage = 'The description is too long';
-          break;
-        default:
-          errorMessage = 'The field is invalid';
-      }
-    });
-
-    return errorMessage;
-  }
-
-  private getImageErrors(formErrors: ValidationErrors): string {
-    let errorMessage = '';
-    Object.keys(formErrors).forEach(key => {
-      switch (key) {
-        case 'required':
-          errorMessage = 'Please enter a link to the image';
-          break;
-        case 'link':
-          errorMessage = 'The image link is invalid';
-          break;
-        default:
-          errorMessage = 'The field is invalid';
-      }
-    });
-
-    return errorMessage;
-  }
-
-  private getLinkVideoErrors(formErrors: ValidationErrors): string {
-    let errorMessage = '';
-    Object.keys(formErrors).forEach(key => {
-      switch (key) {
-        case 'required':
-          errorMessage = 'Please enter a link to the video';
-          break;
-        case 'link':
-          errorMessage = 'The video link is invalid';
-          break;
-        default:
-          errorMessage = 'The field is invalid';
-      }
-    });
-
-    return errorMessage;
-  }
-
-  private getCreationDateErrors(formErrors: ValidationErrors): string {
-    let errorMessage = '';
-    Object.keys(formErrors).forEach(key => {
-      switch (key) {
-        case 'required':
-          errorMessage = 'Please enter a creation date';
-          break;
-        case 'date':
-          errorMessage = 'The date is invalid';
-          break;
-        default:
-          errorMessage = 'The field is invalid';
-      }
-    });
-
-    return errorMessage;
   }
 }

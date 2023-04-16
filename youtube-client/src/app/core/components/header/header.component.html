@@ -1,13 +1,16 @@
 <header>
   <div class="header-container">
-    <div class="header__logo">
+    <a class="header__logo" [routerLink]="['/videos']">
       <img src="assets/logo.svg" alt="Logo">
-    </div>
+    </a>
     <div class="header__controls" appHideByRoute>
       <app-search-form></app-search-form>
       <button class="header__settings" (click)="onSettingsClick()">
         <img src="assets/settings.svg" alt="Settings">
       </button>
+      <a class="header__settings" [routerLink]="['/admin']">
+        Create card
+      </a>
     </div>
     <div class="header__user">
       <button class="login-btn" *ngIf="((isUserLoggedIn$ | async) === false);else logout">Login</button>

@@ -2,13 +2,12 @@ import { FormGroup } from '@angular/forms';
 
 export abstract class FormBase {
   protected abstract form: FormGroup;
-  protected abstract getControlErrors(controlName: string): string | null;
   protected abstract buildForm(): void;
   protected abstract onSubmitForm(): void;
 
-  isControlInvalid(controlName: string) {
+  isControlInvalid(controlName: string, errorCode?: string) {
     const control = this.form.controls[controlName];
-    return control.touched && control.errors;
+    return control.touched && control.hasError(errorCode || '');
   }
 
   isSubmitButtonDisabled() {

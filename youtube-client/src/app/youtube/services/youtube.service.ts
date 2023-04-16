@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {
-  BehaviorSubject, from, map, Observable, switchMap, tap, toArray
+  BehaviorSubject, from, map, switchMap, toArray
 } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { SearchResponse } from '../models/search-response.model';
@@ -16,10 +16,6 @@ export class YoutubeService {
   private videos$: BehaviorSubject<SearchItem[]> = new BehaviorSubject<SearchItem[]>([]);
   private initialVideos!: SearchItem[];
   constructor(private httpClient: HttpClient) {}
-
-  getVideos(): Observable<SearchItem[]> {
-    return this.videos$.asObservable();
-  }
 
   get isFilterVisible$() {
     return this.isFilterBlockVisible$.asObservable();
@@ -39,12 +35,7 @@ export class YoutubeService {
           .pipe(
             map(item => item.id as ItemId),
             toArray(),
-            switchMap(ids => this.getVideosDetailsByIds(ids)),
-            tap((videos) => {
-              this.initialVideos = videos.items;
-              this.videos$.next(videos.items);
-              return true;
-            })
+            switchMap(ids => this.getVideosDetailsByIds(ids))
           ))
       );
   }

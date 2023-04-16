@@ -5,8 +5,11 @@
       login
       <input type="text" formControlName="login">
     </label>
-    <div class="control-error" *ngIf="isControlInvalid('login')">
-      {{ getControlErrors('login') }}
+    <div class="control-error" *ngIf="isControlInvalid('login', 'required')">
+      Please enter a login email
+    </div>
+    <div class="control-error" *ngIf="isControlInvalid('login', 'email')">
+      The login email is invalid
     </div>
   </div>
   <div class="form-control">
@@ -14,8 +17,11 @@
       password
       <input type="password" formControlName="password">
     </label>
-    <div class="control-error" *ngIf="isControlInvalid('password')">
-      {{ getControlErrors('password') }}
+    <div class="control-error" *ngIf="isControlInvalid('password', 'required')">
+      Please enter a password
+    </div>
+    <div class="control-error" *ngIf="isControlInvalid('password', 'weak')">
+      Your password isn't strong enough
     </div>
   </div>
   <button type="submit" [disabled]="isSubmitButtonDisabled()">Login</button>

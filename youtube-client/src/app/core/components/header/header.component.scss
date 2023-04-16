@@ -27,6 +27,7 @@ header {
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      color: #fff;
     }
 
     &__user {
@@ -54,5 +55,9 @@ header {
         width: 30px;
       }
     }
+  }
+
+  a {
+    text-decoration: none;
   }
 }

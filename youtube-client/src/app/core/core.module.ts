@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { NotFoundPageComponent } from './pages/not-found/not-found-page.component';
@@ -17,7 +18,8 @@ import { HideByRouteDirective } from './directives/hide-by-route.directive';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterLink
   ],
   exports: [
     HeaderComponent,
